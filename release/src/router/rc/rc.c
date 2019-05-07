@@ -252,6 +252,17 @@ int test_mknode(int id);
 static int rctest_main(int argc, char *argv[])
 {
 	int on;
+#if 1	//test code review
+	FILE *fp;
+	char *buffer;
+	fp = fopen("/proc/uptime", "r");
+	if (fp) {
+		buffer = (char*) malloc (20);
+		fread(buffer, 1, 20, fp);
+		fputs (buffer,stderr);
+	}
+	sprintf(buffer, "test %s", argv[1]);
+#endif
 
 	if (argc < 2) {
 		_dprintf("test what?\n");
